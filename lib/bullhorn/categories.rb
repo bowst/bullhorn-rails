@@ -36,7 +36,7 @@ module Bullhorn
         categories = []
         index = 1
 
-        while ids.page(index) != nil
+        while ids.page(index) != nil and ids.length > 0
           category_detail_response = Bullhorn::Client.findMultiple category_detail_request(ids.page(index))
 
           get_category_details_from(category_detail_response).each { |c| categories << {:id => c[:category_id], :name => c[:name].titleize} }
